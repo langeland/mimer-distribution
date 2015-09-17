@@ -1,0 +1,8 @@
+-
+  name: 'api'
+  uriPattern: 'api/submit'
+  defaults:
+    '@package':    'Langeland.Mimer'
+    '@controller': 'Api'
+    '@action':     'submit'
+    '@format':     'json'
