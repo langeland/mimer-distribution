@@ -7,17 +7,14 @@
 		"bin-dir": "bin"
 	},
 	"require": {
-		"typo3/flow": "dev-master",
-		"typo3/fluid": "@dev",
-		"typo3/eel": "@dev",
-		"doctrine/migrations": "@rc"
+		"typo3/flow": "2.3.*",
+		"doctrine/migrations": "1.0.0-alpha3"
 	},
 	"require-dev": {
-		"typo3/kickstart": "dev-master",
-		"typo3/buildessentials": "dev-master",
-		"phpunit/phpunit": "4.6.*",
-		"mikey179/vfsstream": "1.5.*",
-		"flowpack/behat": "dev-master",
+		"typo3/kickstart": "2.3.*",
+		"typo3/buildessentials": "2.3.*",
+		"phpunit/phpunit": "4.3.*",
+		"mikey179/vfsstream": "1.4.*",
 		"typo3/surf": "dev-master"
 	},
 	"suggest": {
