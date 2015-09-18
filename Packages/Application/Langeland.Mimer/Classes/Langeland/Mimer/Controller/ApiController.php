@@ -37,35 +37,35 @@ class ApiController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	}
 
 	/**
-	 * @param string $rawData
+	 * @param string $data
 	 * @return void
 	 * @throws \Exception
 	 */
-	public function submitAction($rawData) {
-		$data = json_decode($rawData, TRUE);
+	public function submitAction($data) {
+		$dataArray = json_decode($data, TRUE);
 		if (json_last_error()) {
 			throw new \Exception('JSON error: ' . json_last_error_msg(), 1442426196);
 		}
 
-		if (!array_key_exists('node', $data)) {
+		if (!array_key_exists('node', $dataArray)) {
 			throw new \Exception('Node missing');
 		}
 
-		if (!array_key_exists('identifier', $data['node'])) {
+		if (!array_key_exists('identifier', $dataArray['node'])) {
 			throw new \Exception('Node identifier missing');
 		}
 
-		if (!array_key_exists('data', $data['node'])) {
+		if (!array_key_exists('data', $dataArray['node'])) {
 			throw new \Exception('Data missing');
 		}
 
-		if (!is_array($data['node']['data'])) {
+		if (!is_array($dataArray['node']['data'])) {
 			throw new \Exception('Data must be an array');
 		}
 
-		if (!$node = $this->nodeRepository->findByIdentifier($data['node']['identifier'])) {
+		if (!$node = $this->nodeRepository->findByIdentifier($dataArray['node']['identifier'])) {
 			$node = new \Langeland\Mimer\Domain\Model\Node();
-			$node->setIdentifier($data['node']['identifier']);
+			$node->setIdentifier($dataArray['node']['identifier']);
 			$node->setCreated(new \DateTime());
 
 			$this->nodeRepository->add($node);
@@ -74,7 +74,7 @@ class ApiController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$sample = new \Langeland\Mimer\Domain\Model\Sample();
 		$sample->setNode($node);
 		$sample->setTime(new \DateTime());
-		$sample->setData($data['node']['data']);
+		$sample->setData($dataArray['node']['data']);
 
 		$this->sampleRepository->add($sample);
 
