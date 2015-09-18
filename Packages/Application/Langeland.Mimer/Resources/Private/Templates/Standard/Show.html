@@ -1,0 +1,17 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Current status of: {f:if(condition: node.name, then: node.name, else: node.identifier)}</f:section>
+
+<f:section name="Content">
+	<f:if condition="{node.description}">
+		<p><em>{node.description}</em></p>
+	</f:if>
+	<p>Sample data from: {node.lastSample.time -> f:format.date(forceLocale: 'da_DK')}</p>
+	<ul>
+		<f:for each="{node.lastSample.data}" key="name" as="value">
+			<li>
+				{name} - {value}
+			</li>
+		</f:for>
+	</ul>
+</f:section>

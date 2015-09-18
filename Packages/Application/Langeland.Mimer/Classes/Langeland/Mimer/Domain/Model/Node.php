@@ -15,6 +15,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Node {
 
 	/**
+	 * @var \Langeland\Mimer\Domain\Repository\SampleRepository
+	 * @Flow\Inject
+	 */
+	var $sampleRepository;
+
+	/**
 	 * @var string
 	 * @ORM\Column(length=32, unique=true)
 	 * @Flow\Identity
@@ -97,6 +103,13 @@ class Node {
 	 */
 	public function setDescription($description) {
 		$this->description = $description;
+	}
+
+	/**
+	 * @return \Langeland\Mimer\Domain\Model\Sample
+	 */
+	public function getLastSample(){
+		return $this->sampleRepository->findLastByNode($this);
 	}
 
 }

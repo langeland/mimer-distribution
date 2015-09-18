@@ -1,4 +1,22 @@
 -
+  name: 'index'
+  uriPattern: 'list'
+  defaults:
+    '@package':    'Langeland.Mimer'
+    '@controller': 'Standard'
+    '@action':     'index'
+    '@format':     'html'
+
+-
+  name: 'show'
+  uriPattern: 'show/{node}'
+  defaults:
+    '@package':    'Langeland.Mimer'
+    '@controller': 'Standard'
+    '@action':     'show'
+    '@format':     'html'
+
+-
   name: 'api'
   uriPattern: 'api/submit'
   defaults:

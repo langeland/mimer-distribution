@@ -16,4 +16,18 @@ class SampleRepository extends Repository {
 
 	// add customized methods here
 
+	/**
+	 * @param \Langeland\Mimer\Domain\Model\Node $node
+	 * @return \Langeland\Mimer\Domain\Model\Sample
+	 */
+	public function findLastByNode(\Langeland\Mimer\Domain\Model\Node $node) {
+		$query = $this->createQuery();
+
+		$query->setOrderings(
+			array('time' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING)
+		)->setLimit(1);
+
+		return $query->execute()->getFirst();
+	}
+
 }
