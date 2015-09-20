@@ -27,6 +27,10 @@ class SampleRepository extends Repository {
 			array('time' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING)
 		)->setLimit(1);
 
+		$query->matching(
+			$query->equals('node', $node)
+		);
+
 		return $query->execute()->getFirst();
 	}
 
